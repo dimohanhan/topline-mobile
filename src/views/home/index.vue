@@ -1,20 +1,20 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <div>
+        <p>Home首页</p>
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'Apphome',
   data () {
     return {
-      active: 0
+
     }
   }
 }
 </script>
 
-<style scope>
+<style lang="less" scoped>
 
 </style>
