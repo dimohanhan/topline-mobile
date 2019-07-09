@@ -24,7 +24,9 @@
     <van-button
     class="btn"
     type="info"
-    @click.prevent="handleLogin">登录</van-button>
+    @click.prevent="handleLogin"
+     :loading="loginLoading"
+     loading-text="加载中...">登录</van-button>
 </div>
     </div>
 </template>
@@ -38,18 +40,23 @@ export default {
       user: {
         mobile: '13104196063',
         code: '123456'
-      }
+      },
+      loginLoading: false
     }
   },
   methods: {
     async handleLogin () {
+      this.loginLoading = true
       try {
-        const res = await login(this.user)
-        console.log(res)
+        const data = await login(this.user)
+        // console.log(res)
+        this.$store.commit('setUser', data)
+        this.$router.push({ name: 'home' })
       } catch (err) {
         console.log(err)
         console.log('登录失败')
       }
+      this.loginLoading = false
     }
   }
 }
